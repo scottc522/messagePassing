@@ -1,19 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(event){
-    console.log("DOM CONTENT LOADED")
-    document.getElementById("demo").addEventListener("click", function(){
-        try {
-        chrome.runtime.sendMessage(true);
-        }
-        catch(err) {    
-            console.log(err)
-        }
-        
-    });
-    
-})
-
-var testingModeOn = true
-
 document.addEventListener('DOMContentLoaded',function (){
 	document.getElementById('testingSwitch').addEventListener('change', function(){
         try {
