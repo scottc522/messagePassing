@@ -1,0 +1,33 @@
+{
+	"manifest_version":2,
+
+	
+	"name": "message pass",
+	"description": "first go at message passing",
+	"version": "1.8",
+
+	"browser_action" :
+	{
+		
+		"default_popup" : "popup.html"
+	},
+	
+
+
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"*://*.google.com/",
+		"<all_urls>",
+		"tabs",
+		"activeTab"
+	],
+	"background" : {
+		"scripts": ["background.js"],
+		"persistent":true
+	},
+	"content_scripts" :[ {
+		"matches" : ["http://*/*", "https://*/*"],
+		"js" : ["content.js"]
+	}	]
+}

@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+	
+	<head>
+		<title> Dis]
+		</title>
+           <script language='javascript' src='popup.js'></script>
+           <link rel="stylesheet" type="text/css" href="popup.css">   
+	</head>
+	
+	<body>
+		<div class = "base">
+			<h1>
+				Beautiful Liar
+      </h1>
+      <div class="topnav">
+          <a href="popup.html">Console</a>
+          <a class="active" href="popupSettings.html">Settings</a>
+          <a href="#about">About</a>
+</div>
+	
+		
+	<table style="width:100%">
+	<tr> 
+		<tr> 
+		<td>Testing Mode<td>
+		<td> <label class="switch"> <input type="checkbox" checked id ="testingSwitch"> <span class="slider round"></span></label> <td>
+		<td>  <p id="demo">Click me.</p> <td>
+    </tr>
+		
+		<tr>
+		<td>Send data<td>
+		<td> <label class="switch"> <input type="checkbox" checked> <span class="slider round"></span></label> <td>
+		<td>  <p id="demo">Click me.</p> <td>
+    </tr>
+	<tr> 
+		<td>HTTPS Require<td>
+		<td> <label class="switch"> <input type="checkbox" checked> <span class="slider round"></span></label> <td>
+		<td>  <p id="demo">Click me.</p> <td>
+    </tr>
+<tr> 
+		<td>HTTP Spoofing<td>
+		<td> <label class="switch"> <input type="checkbox" checked> <span class="slider round"></span></label> <td>
+		<td>  <p id="demo">Click me.</p> <td>
+    </tr>
+    </tr>
+  </table>
+  <table style="width:100%">
+<tr>
+    <td><button id = "blackListB" class = "button"  type ="button" id = "makeException"> Edit API blacklist </button></td> 
+  <td><button id = "whiteListB" class = "button"  type ="button" id = "makeException"> Add URL to whitelist </button></td>
+</table>
+</div>	
+	<body>
+</html>
+
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ 
+<html>
+  <head>
+    <title>Beatiful Liar</title>
+    <style type="text/css">
+      body {
+        margin: 210px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+         position: absolute;
+    left: 80px;
+    width: 200px;
+    height: 120px;
+    border: 3px solid #8AC007;
+      }
+	  
+	  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+listO {
+    position: absolute;
+    left: 80px;
+    width: 200px;
+    height: 120px;
+    border: 3px solid #8AC007;
+}
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <h1>Beautiful Liar</h1>
+	<div id = "listO>
+	<label> Require HTTPS <label>
+    <div id="container">
+      <label class="switch">
+		<input type="checkbox">
+		<span class="slider"></span>
+	  </label>
+    </div>
+	</div>
+	
+  </body>
+</html>
+<--
