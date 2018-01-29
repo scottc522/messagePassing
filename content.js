@@ -33,6 +33,7 @@ myMap.set("screenH",false)
 myMap.set("screenW",false)
 myMap.set("screenAW",false)
 
+console.log(myMap)
 var re = /var? *[\w]*\s=\s*navigator.plugins+/g
 if (re.test(jscript)){
     myMap.set("plugins", true)
@@ -50,7 +51,7 @@ if (re.test(jscript)){
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.cookieEnabled/g
 
 if (re.test(jscript)){
-    myMap.set("cookiesEnabled",false)
+    myMap.set("cookiesEnabled",true)
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.appCodeName/g
 
