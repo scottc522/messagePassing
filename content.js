@@ -15,105 +15,120 @@ while(doc.nextSibling != null){
 
 
 }
-var myMap = new Map();
-myMap.set("plugins", false)
-myMap.set("userAgent",false)
-myMap.set("screenAH",false)
-myMap.set("appname",false)
-myMap.set("cookiesEnabled",false)
-myMap.set("appcodename",false)
-myMap.set("product",false)
-myMap.set("appVersion",false)
-myMap.set("platform",false)
-myMap.set("language",false)
-myMap.set("java",false)
-myMap.set("pixelD",false)
-myMap.set("colorD",false)
-myMap.set("screenH",false)
-myMap.set("screenW",false)
-myMap.set("screenAW",false)
+var myMap = {
+     plugins:false,
+     userAgent:false,
+     screenAH:false,
+     appname:false,
+     cookiesEnabled:false,
+     appcodename:false,
+     product:false,
+     appVersion:false,
+     platform:false,
+     language:false,
+     java:false,
+     pixelD:false,
+     colorD:false,
+     screenH:false,
+     screenW:false,
+     screenAW:false,
+    
+
+    };
 
 console.log(myMap)
 var re = /var? *[\w]*\s=\s*navigator.plugins+/g
 if (re.test(jscript)){
-    myMap.set("plugins", true)
+    myMap.plugins = true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.userAgent/g
 if (re.test(jscript)){
-    myMap.set("userAgent",true)
+    myMap.userAgent= true
 }
 
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.appName/g
 
 if (re.test(jscript)){
-    myMap.set("appname",true)
+    myMap.appname = true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.cookieEnabled/g
 
 if (re.test(jscript)){
-    myMap.set("cookiesEnabled",true)
+    myMap.cookiesEnabled =true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.appCodeName/g
 
 
 if (re.test(jscript)){
-    myMap.set("appcodename",true)
+    myMap.appcodename =true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.product/g
 
 
 if (re.test(jscript)){
-    myMap.set("product",true)
+    myMap.product = true
 }
 
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.appVersion/g
 
 if (re.test(jscript)){
-    myMap.set("appVersion",true)
+    myMap.appVersion=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.platform/g
 
 if (re.test(jscript)){
-    myMap.set("platform",true)
+    myMap.platform=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.language/g
 
 if (re.test(jscript)){
-    myMap.set("language",true)
+    myMap.language=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)navigator.javaEnabled/g
 
 if (re.test(jscript)){
-    myMap.set("java",true)}
+    myMap.java = true
+}
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.pixelDepth/g
 
 if (re.test(jscript)){
-    myMap.set("pixelD",true)
+    myMap.pixelD=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.colorDepth/g
 
 if (re.test(jscript)){
-    myMap.set("colorD",true)
+    myMap.colorD=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.height/g
 
 if (re.test(jscript)){
-    myMap.set("screenH",true)    
+    myMap.screenH=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.width/g
 
 if (re.test(jscript)){
-    myMap.set("screenW",true)
+    myMap.screenW = true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.availWidth/g
 
 if (re.test(jscript)){
-    myMap.set("screenAW",true)
+    myMap.screenAW=true
 }
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.availHeight/g
 
 if (re.test(jscript)){
-    myMap.set("screenAH",true)
+    myMap.screenAH=true
 }
 console.log(myMap)
+try {
+    
+    var jobject = JSON.parse("{ \"id\" : \"fingerPrintFlags\", \"message\" :" + JSON.stringify(myMap) +"} " )
+    console.log(JSON.stringify(myMap ))
+    chrome.runtime.sendMessage(jobject);
+    }
+    catch(err) {    
+        console.log(err)
+    }
+
+
 //console.log(document.getElementsByTagName("script").innerHTML )

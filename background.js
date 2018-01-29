@@ -2,8 +2,8 @@ chrome.runtime.onMessage.addListener(function(messageI, sender, sendResponse){
     //var setting = messageI
   //  console.log("ID    : " + messageI.id)
    // console.log("MESSAGE      : " + setting.message);
-   const chrome = require('sinon-chrome');
-   
+   //const chrome = require('sinon-chrome');
+   console.log("BACKGROUND SCRIPT RUNNING")
     switch(messageI.id) {
         case "testingSwitch":
             console.log("Testing Switch hit")
@@ -32,6 +32,9 @@ chrome.runtime.onMessage.addListener(function(messageI, sender, sendResponse){
        case "whiteList":
        console.log(messageI.message)
        console.log("WhiteList list switch hit")
-       break
+       break;
+       case "fingerPrintFlags":
+       console.log(messageI.message)
+       console.log("recieved flags")
     }
 })
