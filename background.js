@@ -2,6 +2,8 @@ chrome.runtime.onMessage.addListener(function(messageI, sender, sendResponse){
     //var setting = messageI
   //  console.log("ID    : " + messageI.id)
    // console.log("MESSAGE      : " + setting.message);
+   const chrome = require('sinon-chrome');
+   
     switch(messageI.id) {
         case "testingSwitch":
             console.log("Testing Switch hit")
