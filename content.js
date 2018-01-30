@@ -146,4 +146,3 @@ try {
     }
 
 
-//console.log(document.getElementsByTagName("script").innerHTML )
