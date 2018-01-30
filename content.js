@@ -1,7 +1,22 @@
 console.log(document.head)
+console.log(document.body)
 console.log(document.head.childNodes)
 console.log(document.head.firstChild)
 var doc = document.head.firstChild
+while(doc.nextSibling != null){
+   
+    if(doc.nodeName == "SCRIPT" )
+    {
+       var jscript = doc.textContent
+       
+       console.log(jscript)
+    }
+    doc = doc.nextSibling
+
+
+
+}
+var doc = document.body.firstChild
 while(doc.nextSibling != null){
    
     if(doc.nodeName == "SCRIPT" )
