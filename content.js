@@ -1,3 +1,6 @@
+//Block websites based on traffic light system
+//Explore Possibility of changing BOM
+
 console.log(document.head)
 console.log(document.body)
 console.log(document.head.childNodes)
@@ -132,6 +135,7 @@ if (re.test(jscript)){
 re = /( * "?[\w]*"? *: * "? *'?"? * \+ |var? *[\w]*\s=\s*)screen.availHeight/g
 
 if (re.test(jscript)){
+    
     myMap.screenAH=true
 }
 console.log(myMap)
@@ -144,5 +148,6 @@ try {
     catch(err) {    
         console.log(err)
     }
+
 
 

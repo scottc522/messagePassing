@@ -38,14 +38,18 @@ chrome.runtime.onMessage.addListener(function(messageI, sender, sendResponse){
        console.log("recieved flags")
     }
 })
-
+/* 
 chrome.webRequest.onBeforeSendHeaders.addListener(
     function(details) {
-        console.log("DETAILS" + JSON.stringify(details))
+        console.log("DETAILS" )   
+        console.log("url:"+details.url);   
+          console.log(details.requestBody);
+        
         console.log(details.requestHeaders)
       for (var i = 0; i < details.requestHeaders.length; ++i) {
           console.log(details.requestHeaders[i])
-        if (details.requestHeaders[i].name === 'User-Agent') {
+        switch (details.requestHeaders[i].name) {
+         case 'User-Agent':
           details.requestHeaders.splice(i, 1,  {  
             "name":"User-Agent",
             "value":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
@@ -53,8 +57,35 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
           break;
         }
       }
-      console.log("details edited" + JSON.stringify(details))
+      for (var i = 0; i < details.requestHeaders.length; ++i) {
+        console.log(details.requestHeaders[i])
+      switch (details.requestHeaders[i].name) {
+       case 'DNT':
+        details.requestHeaders.splice(i, 1,  {  
+          "name":"DNT",
+          "value":"1"
+       });
+        break;
+      }
+    }
+
+     
+        console.log(JSON.stringify(details))
       return {requestHeaders: details.requestHeaders};
     },
     {urls: ["<all_urls>"]},
-    ["blocking", "requestHeaders"]);
+    ["blocking", "requestHeaders"]); */
+
+    chrome.webRequest.onBeforeRequest.addListener(
+      function(details)
+      {
+
+         // console.log(details.requestBody.byteLength);
+          for (i=0;details.requestBody.length;i++){
+            x = details.requestBody[i]
+            console.log(x)
+          }
+      },
+      {urls: ["<all_urls>"]},
+      ['requestBody']
+  );  
