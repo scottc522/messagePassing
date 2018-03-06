@@ -76,7 +76,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     {urls: ["<all_urls>"]},
     ["blocking", "requestHeaders"]); */
 
-    chrome.webRequest.onBeforeRequest.addListener(
+ /*  chrome.webRequest.onBeforeRequest.addListener(
       function(details)
       {
 
@@ -88,4 +88,26 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
       },
       {urls: ["<all_urls>"]},
       ['requestBody']
-  );  
+  );  */
+//URL patterns https://developer.chrome.com/extensions/match_patterns 
+    var domains = ["*://*.bbc.co.uk/*","*://*.oracle.com/*"]
+
+
+    chrome.webRequest.onBeforeRequest.addListener(
+    function(details) {
+      chrome.runtime.onConnect.addListener(function(port){
+          port.postMessage({greeting:details.url});
+        });
+        console.log(details.url)
+    console.log("message appears to have been fired")
+
+        return {cancel: true};
+    },
+    {
+
+        urls: domains
+
+    },
+    ["blocking"]
+);
+  

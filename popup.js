@@ -1,8 +1,36 @@
 document.addEventListener('DOMContentLoaded',function (){
+  var port = chrome.runtime.connect({name:"content"});
+port.onMessage.addListener(function(message,sender){
+  
+    console.log(JSON.stringify(message.greeting));
+    document.getElementById("urlB").innerHTML = message.greeting + "has been blocked as we suspect " 
+  
+});
+
+  document.getElementById('urlB').addEventListener('click', function(tab){
+    //if(document.getElementById('urlB').innerHTML.length > 1){
+      console.log(11)
+      window.alert("BOO!!!!")
+    //}
+  })
+  //chrome.runtime.onMessage.addListener(function(messageI, sender, sendResponse){  
+    //window.alert(messageI)
+    //document.getElementById('urlB').value = "Some text to enter"
+
+    //var setting1 = messageI.messages
+    //window.alert(setting)
+    //var setting = JSON.stringify(messageI)
+  //  console.log("ID    : " + messageI.id)
+    //console.log("MESSAGE      : " + setting.message);
+   //const chrome = require('sinon-chrome');
+   //window.alert(setting)
+
+    
+
 	document.getElementById('testingSwitch').addEventListener('change', function(){
         try {
            var jobject = JSON.parse("{ \"id\" : \"testingSwitch\", \"message\" :" +document.getElementById('testingSwitch').checked+"} ")
-           chrome.runtime.sendMessage(jobject) ;
+           chrome.runtime.sendMessage(JSON.stringfy(jobject)) ;
            
             }
             catch(err) {    
