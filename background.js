@@ -76,19 +76,22 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     {urls: ["<all_urls>"]},
     ["blocking", "requestHeaders"]); */
 
- /*  chrome.webRequest.onBeforeRequest.addListener(
+  chrome.webRequest.onBeforeRequest.addListener(
       function(details)
       {
-
+         chrome.runtime.onConnect.addListener(function(port){
+          port.postMessage({greeting:details.requestBody});
+        });
+          console.log(details.requestBody)
          // console.log(details.requestBody.byteLength);
-          for (i=0;details.requestBody.length;i++){
-            x = details.requestBody[i]
-            console.log(x)
-          }
+        //  for (i=0;details.requestBody.length;i++){
+          ///  x = details.requestBody[i]
+            //console.log(x)
+          //}
       },
       {urls: ["<all_urls>"]},
       ['requestBody']
-  );  */
+  );  
 //URL patterns https://developer.chrome.com/extensions/match_patterns 
     var domains = ["*://*.bbc.co.uk/*","*://*.oracle.com/*"]
 
