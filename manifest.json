@@ -2,7 +2,7 @@
 	"manifest_version":2,
 
 	
-	"name": "message pass",
+	"name": "Beatiful Liar",
 	"description": "first go at message passing",
 	"version": "1.8",
 
@@ -20,7 +20,8 @@
 		"*://*.google.com/",
 		"<all_urls>",
 		"tabs",
-		"activeTab"
+		"activeTab",
+		"cookies"
 	],
 	"background" : {
 		"scripts": ["background.js"],

@@ -1,11 +1,75 @@
 document.addEventListener('DOMContentLoaded',function (){
-  var port = chrome.runtime.connect({name:"content"});
-port.onMessage.addListener(function(message,sender){
+  /* var port = chrome.runtime.connect({name:"content"}); */
+/* port.onMessage.addListener(function(message,sender){
   
     console.log(JSON.stringify(message.greeting));
     document.getElementById("urlB").innerHTML = message.greeting + "has been blocked as we suspect " 
   
-});
+}); */
+
+var cookieJar = [];
+chrome.cookies.getAll({},function(details){
+    cookieJar = details;
+    //console.log(cookieJar)
+    alert("HOORY")
+    var tabel = '<table id = \'tabel\'> <tr>';
+    
+    
+    console.log(cookieJar)
+    for (index =0; index < cookieJar.length;index++){
+        if (cookieJar[index].domain == ".facebook.com" && cookieJar[index].session == true){
+            console.log(cookieJar[index])
+        }
+        
+        if (!tabel.includes(cookieJar[index].domain)){
+        tabel += '<tr id = ' + index + 'row>' + '<td>' + cookieJar[index].domain  +'</td>' + 
+        '<td id =' + index   + '>' +'<button type = "button" id =' +  index +'>'+ "Delete" + '</button>' + '</td>' 
+        + '<td id =' + index   + '>' +'<button type = "button" id =' +  index  +'>'+ "Block" + '</button>'+ 
+       '<td id =' + index   + '>' +'<button type = "button" id =' +  index +'>'+ "SuperCookie Deletion" + '</button>'+'<tr>';
+}
+    } 
+    tabel  += '</tr> </table>'
+    document.getElementById("urlB").innerHTML = tabel
+})  
+    document.getElementById("urlB").onclick = function(e) {
+
+        if(e.target.innerHTML == "Delete"){
+            //console.log(e.target.id)
+            domainTD = cookieJar[e.target.id].domain
+            console.log(domainTD)
+        if (confirm("Do you really wish to delete this all cookies for the domain " + domainTD +" it may cause some services to\
+        function incorrectly"));
+   {     for(k = 0; k < cookieJar.length; k++)
+            { 
+        
+            var url = "http" + (cookieJar[k].secure ? "s" : "") + "://" + cookieJar[k].domain + cookieJar[k].path;
+            if (domainTD == cookieJar[k].domain && cookieJar[k].session == false){
+                console.log(cookieJar[k])
+           
+
+             chrome.cookies.remove({"url": url, "name": cookieJar[k].name},function(details){
+                console.log("I HAVE DELETED")
+                console.log(details)
+                chrome.cookies.getAll({}, function(params) {
+                    console.log(params)
+                    
+                })
+            })  
+        }
+        } } 
+            
+} 
+    
+function deleteCookie(theCookie,id){
+   
+    console.log(theCookie)
+    
+    var url = "http" + (cookie.secure ? "s" : "") + "://" + theCookie.domain +
+    cookie.path;
+chrome.cookies.remove({"url": url, "name": theCookie.name});
+}             
+            
+}
 
   document.getElementById('urlB').addEventListener('click', function(tab){
     //if(document.getElementById('urlB').innerHTML.length > 1){
